@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Abid Ansari - CV</title>
+
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    
+</head>
+
+<body>
+
+    <!-- Download Button -->
+    <button class="btn orange" onclick="downloadCV()">
+        ↓ Download Resume
+    </button>
+
+
+    <script>
+        async function downloadCV() {
+
+            const { jsPDF } = window.jspdf;
+
+            const pdf = new jsPDF();
+
+            // Page settings
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const margin = 20;
+            let y = 20;
+
+
+            // =========================
+            // HEADER
+            // =========================
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(24);
+            pdf.text("ABID ANSARI", margin, y);
+
+            y += 9;
+
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(12);
+            pdf.text("IT Support Executive | Web Developer", margin, y);
+
+            y += 8;
+
+            pdf.setFontSize(10);
+            pdf.text("Email: your-email@example.com", margin, y);
+            y += 5;
+
+            pdf.text("Phone: +977-XXXXXXXXXX", margin, y);
+            y += 5;
+
+            pdf.text("Nepal", margin, y);
+
+
+            // Line
+            y += 7;
+
+            pdf.setLineWidth(0.5);
+            pdf.line(margin, y, pageWidth - margin, y);
+
+
+            // =========================
+            // PROFESSIONAL SUMMARY
+            // =========================
+
+            y += 12;
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(15);
+            pdf.text("PROFESSIONAL SUMMARY", margin, y);
+
+            y += 8;
+
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(10);
+
+            const summary =
+                "Dedicated IT Support Executive with experience in technical support, " +
+                "software troubleshooting, system administration and web development. " +
+                "Interested in developing reliable software solutions and improving " +
+                "technical workflows.";
+
+            const summaryLines = pdf.splitTextToSize(
+                summary,
+                pageWidth - margin * 2
+            );
+
+            pdf.text(summaryLines, margin, y);
+
+            y += summaryLines.length * 5 + 7;
+
+
+            // =========================
+            // SKILLS
+            // =========================
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(15);
+            pdf.text("TECHNICAL SKILLS", margin, y);
+
+            y += 8;
+
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(10);
+
+            const skills = [
+                "HTML, CSS, JavaScript",
+                "ASP.NET Core / .NET",
+                "C#",
+                "SQL Server",
+                "IIS Server",
+                "Web Application Development",
+                "Database Management",
+                "IT Technical Support",
+                "Software Troubleshooting",
+                "Microsoft Office"
+            ];
+
+            skills.forEach(skill => {
+                pdf.text("• " + skill, margin, y);
+                y += 5;
+            });
+
+
+            // =========================
+            // WORK EXPERIENCE
+            // =========================
+
+            y += 7;
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(15);
+            pdf.text("WORK EXPERIENCE", margin, y);
+
+            y += 8;
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(11);
+            pdf.text("IT Support Executive", margin, y);
+
+            y += 6;
+
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(10);
+
+            const experience = [
+                "• Provided technical support to users.",
+                "• Troubleshot software and system issues.",
+                "• Supported school and business software applications.",
+                "• Worked with databases and SQL Server.",
+                "• Assisted with web application deployment.",
+                "• Managed IIS and local server configuration.",
+                "• Coordinated with team members to resolve technical issues."
+            ];
+
+            experience.forEach(item => {
+                pdf.text(item, margin, y);
+                y += 5;
+            });
+
+
+            // =========================
+            // PROJECTS
+            // =========================
+
+            y += 7;
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(15);
+            pdf.text("PROJECTS", margin, y);
+
+            y += 8;
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(11);
+            pdf.text("School Management Software", margin, y);
+
+            y += 6;
+
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(10);
+
+            pdf.text(
+                "Developed and supported web-based school software with database integration.",
+                margin,
+                y
+            );
+
+            y += 8;
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(11);
+            pdf.text("HRM / ERP Software", margin, y);
+
+            y += 6;
+
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(10);
+
+            pdf.text(
+                "Worked on web-based HRM/ERP concepts using .NET and SQL Server.",
+                margin,
+                y
+            );
+
+            y += 8;
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(11);
+            pdf.text("Personal Portfolio Website", margin, y);
+
+            y += 6;
+
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(10);
+
+            pdf.text(
+                "Created a responsive personal website with portfolio and contact sections.",
+                margin,
+                y
+            );
+
+
+            // =========================
+            // EDUCATION
+            // =========================
+
+            y += 14;
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(15);
+            pdf.text("EDUCATION", margin, y);
+
+            y += 8;
+
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(10);
+
+            pdf.text(
+                "Educational qualifications can be added here.",
+                margin,
+                y
+            );
+
+
+            // =========================
+            // PERSONAL DETAILS
+            // =========================
+
+            y += 14;
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(15);
+            pdf.text("PERSONAL DETAILS", margin, y);
+
+            y += 8;
+
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(10);
+
+            pdf.text("Name: Abid Ansari", margin, y);
+            y += 5;
+
+            pdf.text("Nationality: Nepali", margin, y);
+            y += 5;
+
+            pdf.text("Location: Nepal", margin, y);
+
+
+            // =========================
+            // DECLARATION
+            // =========================
+
+            y += 14;
+
+            pdf.setFont("helvetica", "bold");
+            pdf.setFontSize(15);
+            pdf.text("DECLARATION", margin, y);
+
+            y += 8;
+
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(10);
+
+            const declaration =
+                "I hereby declare that the information provided in this CV is true " +
+                "and correct to the best of my knowledge.";
+
+            const declarationLines = pdf.splitTextToSize(
+                declaration,
+                pageWidth - margin * 2
+            );
+
+            pdf.text(declarationLines, margin, y);
+
+
+            // =========================
+            // DOWNLOAD PDF
+            // =========================
+
+            pdf.save("Abid-Ansari-CV.pdf");
+        }
+    </script>
+
+</body>
+</html>
+

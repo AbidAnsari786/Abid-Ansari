@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Abid Ansari | Web Developer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="logo-section">
+            <div class="logo">AA</div>
+            <span>Abid Ansari</span>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle">
+            ☰
+        </button>
+
+        <nav id="navMenu">
+            
+    
+            <a href="#home">Home</a>
+            <a href="#summary">Summary</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#teaching">Teaching</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact" class="hire-btn">
+                Hire Remote
+        
+            </a>
+            <button onclick="toggleDarkMode()" id="darkBtn">
+        🌙 Dark Mode
+         <script>
+        function toggleDarkMode() {
+
+            document.body.classList.toggle("dark");
+
+            const button = document.getElementById("darkBtn");
+
+            if (document.body.classList.contains("dark")) {
+                button.innerHTML = "☀️ Light Mode";
+            } else {
+                button.innerHTML = "🌙 Dark Mode";
+            }
+        }
+    </script>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-left">
+
+            <div class="hello">
+                HELLO, I'M
+            </div>
+
+            <h1>
+                Abid Ansari
+                <span>Web Developer</span>
+            </h1>
+
+            <h3>
+                Web Developer • Software Developer • Remote-Ready
+            </h3>
+
+            <p class="description">
+                Specializing in scalable web applications, modern software
+                solutions, database systems, and responsive user interfaces
+                for businesses and global teams.
+            </p>
+
+            <div class="info-boxes">
+
+                <div class="info-box">
+                    📍 Birgunj, Nepal
+                </div>
+
+                <div class="info-box">
+                    🕐 Available for Remote / Freelance
+                </div>
+
+            </div>
+           <div class="buttons">
+<!-- jsPDF Library - Put this before your script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- Download Button -->
+<button type="button" class="btn orange" onclick="downloadCV()">
+    ↓ Download Resume
+</button>
+
+<script>
+async function downloadCV() {
+
+    // Check jsPDF
+    if (!window.jspdf) {
+        alert("PDF library is not loaded. Please check your internet connection.");
+        return;
+    }
+
+    const { jsPDF } = window.jspdf;
+
+    const pdf = new jsPDF();
+
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+
+    const margin = 20;
+    const maxWidth = pageWidth - (margin * 2);
+
+    let y = 20;
+
+
+    // ==========================================
+    // PAGE CHECK FUNCTION
+    // ==========================================
+
+    function checkPage(requiredSpace = 15) {
+
+        if (y + requiredSpace > pageHeight - 20) {
+            pdf.addPage();
+            y = 20;
+        }
+    }
+
+
+    // ==========================================
+    // HEADER
+    // ==========================================
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(24);
+
+    pdf.text("ABID ANSARI", margin, y);
+
+    y += 9;
+
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(12);
+
+    pdf.text(
+        "IT Support Executive | Web Developer",
+        margin,
+        y
+    );
+
+    y += 8;
+
+
+    pdf.setFontSize(10);
+
+    pdf.text(
+        "Email:Abidansari786@gmail.com",
+        margin,
+        y
+    );
+
+    y += 5;
+
+
+    pdf.text(
+        "Phone: +977-9816232491",
+        margin,
+        y
+    );
+
+    y += 5;
+
+
+    pdf.text(
+        "Location: Nepal",
+        margin,
+        y
+    );
+
+
+    // Header line
+
+    y += 7;
+
+    pdf.setLineWidth(0.5);
+
+    pdf.line(
+        margin,
+        y,
+        pageWidth - margin,
+        y
+    );
+
+
+    // ==========================================
+    // PROFESSIONAL SUMMARY
+    // ==========================================
+
+    y += 12;
+
+    checkPage(30);
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(15);
+
+    pdf.text(
+        "PROFESSIONAL SUMMARY",
+        margin,
+        y
+    );
+
+    y += 8;
+
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+
+
+    const summary =
+        "Dedicated IT Support Executive with experience in technical support, " +
+        "software troubleshooting, system administration and web development. " +
+        "Interested in developing reliable software solutions and improving " +
+        "technical workflows.";
+
+
+    const summaryLines =
+        pdf.splitTextToSize(summary, maxWidth);
+
+
+    pdf.text(
+        summaryLines,
+        margin,
+        y
+    );
+
+
+    y += summaryLines.length * 5 + 7;
+
+
+    // ==========================================
+    // TECHNICAL SKILLS
+    // ==========================================
+
+    checkPage(70);
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(15);
+
+    pdf.text(
+        "TECHNICAL SKILLS",
+        margin,
+        y
+    );
+
+    y += 8;
+
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+
+
+    const skills = [
+        "HTML, CSS, JavaScript",
+        "ASP.NET Core / .NET",
+        "C#",
+        "SQL Server",
+        "IIS Server",
+        "Web Application Development",
+        "Database Management",
+        "IT Technical Support",
+        "Software Troubleshooting",
+        "Microsoft Office"
+    ];
+
+
+    skills.forEach(function(skill) {
+
+        checkPage(8);
+
+        pdf.text(
+            "• " + skill,
+            margin,
+            y
+        );
+
+        y += 5;
+
+    });
+
+    // ==========================================
+    // WORK EXPERIENCE
+    // ==========================================
+
+    y += 7;
+
+    checkPage(50);
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(15);
+
+    pdf.text(
+        "WORK EXPERIENCE",
+        margin,
+        y
+    );
+
+    y += 8;
+
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(11);
+
+    pdf.text(
+        "IT Support Executive",
+        margin,
+        y
+    );
+
+    y += 6;
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+
+    const experience = [
+
+        "Provided technical support to users.",
+        "Troubleshot software and system issues.",
+        "Supported school and business software applications.",
+        "Worked with databases and SQL Server.",
+        "Assisted with web application deployment.",
+        "Managed IIS and local server configuration.",
+        "Coordinated with team members to resolve technical issues."
+    ];
+    experience.forEach(function(item) {
+
+        const lines =
+            pdf.splitTextToSize(
+                "• " + item,
+                maxWidth
+            );
+
+        checkPage(lines.length * 5 + 3);
+
+        pdf.text(
+            lines,
+            margin,
+            y
+        );
+
+        y += lines.length * 5;
+
+    });
+    // ==========================================
+    // PROJECTS
+    // ==========================================
+
+    y += 7;
+
+    checkPage(80);
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(15);
+
+    pdf.text(
+        "PROJECTS",
+        margin,
+        y
+    );
+
+    y += 5;
+
+
+    // Project 1
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(11);
+
+    pdf.text(
+        "School Management Software",
+        margin,
+        y
+    );
+
+    y += 6;
+
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+
+    let projectText =
+        "Developed and supported web-based school software " +
+        "with database integration.";
+
+
+    let projectLines =
+        pdf.splitTextToSize(
+            projectText,
+            maxWidth
+        );
+
+
+    checkPage(projectLines.length * 5 + 5);
+
+    pdf.text(
+        projectLines,
+        margin,
+        y
+    );
+
+    y += projectLines.length * 5 + 5;
+
+
+    // Project 2
+
+    checkPage(25);
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(11);
+
+    pdf.text(
+        "HRM / ERP Software",
+        margin,
+        y
+    );
+
+    y += 6;
+
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+
+
+    projectText =
+        "Worked on web-based HRM/ERP concepts using .NET " +
+        "and SQL Server.";
+
+    projectLines =
+        pdf.splitTextToSize(
+            projectText,
+            maxWidth
+        );
+
+    checkPage(projectLines.length * 5 + 5);
+
+    pdf.text(
+        projectLines,
+        margin,
+        y
+    );
+
+    y += projectLines.length * 5 + 5;
+
+
+    // Project 3
+
+    checkPage(25);
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(11);
+
+    pdf.text(
+        "Personal Portfolio Website",
+        margin,
+        y
+    );
+
+    y += 6;
+
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+
+
+    projectText =
+        "Created a responsive personal website with portfolio " +
+        "and contact sections.";
+
+
+    projectLines =
+        pdf.splitTextToSize(
+            projectText,
+            maxWidth
+        );
+
+
+    checkPage(projectLines.length * 5 + 5);
+
+    pdf.text(
+        projectLines,
+        margin,
+        y
+    );
+
+    y += projectLines.length * 5 + 5;
+
+    // ==========================================
+    // EDUCATION
+    // ==========================================
+
+    y += 8;
+
+    checkPage(35);
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(15);
+
+    pdf.text(
+        "EDUCATION",
+        margin,
+        y
+    );
+
+    y += 8;
+
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+
+    pdf.text(
+        "Diploma in Computer Science",
+        margin,
+        y
+    );
+
+    // ==========================================
+    // PERSONAL DETAILS
+    // ==========================================
+
+    y += 14;
+
+    checkPage(40);
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(15);
+
+    pdf.text(
+        "PERSONAL DETAILS",
+        margin,
+        y
+    );
+
+    y += 8;
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+
+
+    pdf.text(
+        "Name: Abid Ansari",
+        margin,
+        y
+    );
+
+    y += 5;
+
+
+    pdf.text(
+        "Nationality: Nepali",
+        margin,
+        y
+    );
+
+    y += 5;
+
+
+    pdf.text(
+        "Location: Nepal",
+        margin,
+        y
+    );
+
+
+    // ==========================================
+    // DECLARATION
+    // ==========================================
+
+    y += 14;
+
+    checkPage(40);
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(15);
+
+    pdf.text(
+        "DECLARATION",
+        margin,
+        y
+    );
+
+    y += 8;
+
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+
+
+    const declaration =
+        "I hereby declare that the information provided in this CV " +
+        "is true and correct to the best of my knowledge.";
+
+
+    const declarationLines =
+        pdf.splitTextToSize(
+            declaration,
+            maxWidth
+        );
+
+
+    pdf.text(
+        declarationLines,
+        margin,
+        y
+    );
+    // ==========================================
+    // DOWNLOAD PDF
+    // ==========================================
+    pdf.save("Abid-Ansari-CV.pdf");
+
+}
+</script>
+                <a href="#projects" class="btn orange">
+                    Start a project
+                </a>
+
+                <a href="#projects" class="btn white">
+                    View projects
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROFILE -->
+        <div class="hero-right">
+
+            <div class="profile-container">
+
+                <img
+                    src="/image/abid photo.jpg"
+                    alt="Abid Ansari"
+                    class="profile-image"
+                >
+
+                <div class="experience">
+
+                    <strong>3+</strong>
+
+                    <span>
+                        YEARS EXPERIENCE
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+    <section class="content-section" id="summary">
+
+        <h2>Professional Summary</h2>
+
+        <p>
+            I am a passionate Web and Software Developer focused on
+            building modern, responsive and user-friendly applications.
+            I enjoy creating practical solutions using modern technologies.
+        </p>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section class="content-section" id="skills">
+
+        <h2>Skills</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Frontend</h3>
+                <p>HTML, CSS, JavaScript, Responsive Design</p>
+            </div>
+
+            <div class="card">
+                <h3>Backend</h3>
+                <p>PHP, Laravel, ASP.NET Core</p>
+            </div>
+
+            <div class="card">
+                <h3>Database</h3>
+                <p>SQL Server, MySQL</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPERIENCE -->
+    <section class="content-section" id="experience">
+
+        <h2>Experience</h2>
+
+        <p>
+            Web Development, Software Development, Database Management,
+            Technical Support and Application Development.
+        </p>
+
+    </section>
+
+
+    <!-- TEACHING -->
+    <section class="content-section" id="teaching">
+
+        <h2>Teaching</h2>
+
+        <p>
+            Helping beginners understand programming, web development,
+            databases and practical software development.
+        </p>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section class="content-section" id="projects">
+
+        <h2>Projects</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>School Management</h3>
+                <p>
+                    Complete school management software with database
+                    and reporting system.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Hospital Management</h3>
+                <p>
+                    Hospital software with patient, doctor,
+                    billing and database modules.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>HRM ERP</h3>
+                <p>
+                    Employee management and HR automation system.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section class="content-section" id="education">
+
+        <h2>Education</h2>
+
+        <p>
+          Diploma in computer engineering from CTEVT, Nepal.
+        </p>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="content-section contact" id="contact">
+
+        <h2>Contact Me</h2>
+
+        <p>Email:abid.ansari98162@gmail.com</p>
+
+        <p>Phone: +977-9816232491</p>
+
+         <button type="button" onclick="alert('Message sent successfully!')" style="background-color: #007bff; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+    Contact
+</button>
+        
+    </section>
+
+
+    <footer>
+
+        <p>
+            © <span id="year"></span> Abid Ansari. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
